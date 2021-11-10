@@ -28,7 +28,6 @@ def donation_submit():
         'amount': request.form.get('amount'),
         'date': request.form.get('date'),
       }
-    print(type(donation.amount))
     donations.insert_one(donation)
     return redirect(url_for('charity_index'))
 
