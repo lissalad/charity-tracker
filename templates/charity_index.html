@@ -1,11 +1,10 @@
 {% extends 'base.html' %} {% block content %}
-<h1>My Donations</h1>
+<h1 class="mb-5">My Donations</h1>
 
-<a href="/donations/new" class="text-light">New Donation</a>
-<div class="">
+<div class="row">
   {% for donation in donations %}
-  <div class="">
-    <h2><a href="/donations/{{ donation._id }}">{{ donation.name }}</a></h2>
+  <div class="col-4 mb-5 text-center">
+    <h2>{{ donation.name }}</h2>
     <small>{{ donation.date }}</small>
   </div>
   {% endfor %} {% endblock %}

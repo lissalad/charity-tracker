@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def charity_index(): 
-    return render_template("charity_index.html")
+    return render_template("charity_index.html", donations=donations.find())
 
 @app.route('/donations/new')
 def donation_new():
