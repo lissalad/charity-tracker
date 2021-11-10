@@ -13,5 +13,14 @@
       <small>{{ donation.amount }}</small>
     </div>
   </div>
+  {% endfor %}
+</div>
+
+<div class="row">
+  {% for donation in donations %}
+  <div class="col-4 mb-5 text-center">
+    <h2>{{ donation.name }}</h2>
+    <small>{{ donation.date }}</small>
+  </div>
   {% endfor %} {% endblock %}
 </div>
