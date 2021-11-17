@@ -26,6 +26,7 @@ def donation_new():
 def donation_submit():
     donation = {
         'name': request.form.get('charity-name'),
+        'website': request.form.get('website'),
         'amount': request.form.get('amount'),
         'date': request.form.get('date'),
       }
