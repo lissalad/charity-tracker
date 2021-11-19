@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<h1 class="mb-5 text-center">All of My Charities</h1>
+
+{% for charity in charities %}
+<div class="container d-flex align-items-center flex-column">
+  <div class="row w-75 border-top py-1">
+    <div class="col">
+      <h3 class="m-0 text-nowrap">{{ charity.name }}</h2>
+    </div>
+    <div class="col text-nowrap text-center">
+      <p class="m-0" style="font-size:1.2em;">{{ charity.website }}</p>
+    </div>
+    <div class="col text-nowrap text-center">
+      <p class="m-0" style="font-size:1.2em;">{{ charity.desc }}</p>
+    </div>
+      <div class="col-auto d-flex align-items-center">
+        <form method="POST" action="/charity/{{ charity._id }}/edit">
+          <button class="btn btn-danger p-1 text-center" style="font-size: 0.9em" type="submit">
+            Edit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

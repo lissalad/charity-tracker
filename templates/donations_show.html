@@ -9,7 +9,6 @@
       <a href="{{ donation.website }}" style="font-size:.8em;" class="text-nowrap">Visit Website</a>
     </div>
     <div class="col text-nowrap text-center">
-      <p class="m-0" style="font-size:1.2em;">${{ '%.2f' | format(donation.amount|float) }}</p>
       <small class="text-secondary" style="font-size: 0.8em">{{ donation.date }}</small>
     </div>
       <div class="col-auto d-flex align-items-center">
@@ -23,3 +22,4 @@
   </div>
   {% endfor %} {% endblock %}
 </div>
+      <!-- <p class="m-0" style="font-size:1.2em;">${{ '%.2f' | format(donation.amount|float) }}</p> -->
