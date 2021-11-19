@@ -12,21 +12,25 @@ app = Flask(__name__)
 
 @app.route('/')
 def charity_index(): 
-    return render_template("charity_index.html")
-
-@app.route('/donations/view')
-def donations_show(): 
     donates=list(donations.find())
     for i in range(len(donates)):
       donates[i]['amount'] = float(donates[i]['amount'])
     donates.sort(key=lambda x: x['date'], reverse=False)
-    return render_template("donations_show.html", donations=donates)
+    return render_template("charity_index.html", donations=donates)
 
 @app.route('/donations/new')
 def donation_new():
     return render_template('donations_new.html')
 
-@app.route('/donations', methods=['POST'])
+@app.route('/charity/new')
+def charity():
+    return render_template('charity_new.html')
+
+@app.route('/donations')
+def donations_view():
+    return render_template('donations_show.html')
+
+@app.route('/', methods=['POST'])
 def donation_submit():
     donation = {
         'name': request.form.get('charity-name'),
@@ -35,7 +39,7 @@ def donation_submit():
         'date': request.form.get('date'),
       }
     donations.insert_one(donation)
-    return redirect(url_for('donations_show'))
+    return redirect(url_for('charity_index'))
 
 @app.route('/donations/<donation_id>/remove', methods=['POST'])
 def donation_del(donation_id):
