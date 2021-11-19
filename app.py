@@ -4,94 +4,40 @@ from bson.objectid import ObjectId
 import os
 import certifi
 
-
 host = os.environ.get("DB_URL")
-client = MongoClient(host, tlsCAFile=certifi.where())
+client = MongoClient(host=host, tlsCAFile=certifi.where())
 db = client.CharityTracker
 donations = db.donations
-charities = db.charities
 
 app = Flask(__name__)
 
 @app.route('/')
 def charity_index(): 
-    return render_template("charity_index.html")
-
-# ----------------- CHARITIES ------------------- #
-@app.route('/charity/new')
-def charity_new():
-    return render_template('charity_new.html')
-
-@app.route('/charities/view')
-def charities_show():
-  chair = list(charities.find())
-  return render_template("charities_show.html", charities=chair)
-
-@app.route('/charities', methods=['POST'])
-def charity_submit():
-    charity = {
-        'name': request.form.get('name'),
-        'website': request.form.get('website'),
-        'description': request.form.get('description'),
-      }
-    charities.insert_one(charity)
-    return redirect(url_for('charities_show'))
-
-@app.route('/charities/<charity_id>')
-def charity_show(charity_id):
-    charity = charities.find_one({'_id': ObjectId(charity_id)})
-    return render_template(('charity_show.html'), charity=charity)
-
-@app.route('/charities/<charity_id>/remove', methods=['POST'])
-def charity_del(charity_id):
-    charities.delete_one({'_id': ObjectId(charity_id)})
-    return redirect(url_for('charities_show'))
-
-
-# ----------------- DONATIONS ------------------- #
-@app.route('/donations/new')
-def donation_new():
-  print('hello')
-  chairs = list(charities.find())
-  return render_template('donations_new.html', charities = chairs)
-
-@app.route('/donations/view')
-def donations_show(): 
     donates=list(donations.find())
     for i in range(len(donates)):
-      print(donates[i])
       donates[i]['amount'] = float(donates[i]['amount'])
-      print(donates[i]['_id'])
-      charity = charities.find_one({'_id': ObjectId(donates[i]['_id'])})
-      print(charity)
-      donates[i]['charity-name'] = charity['name']
     donates.sort(key=lambda x: x['date'], reverse=False)
-    return render_template("donations_show.html", donations=donates)
+    return render_template("charity_index.html", donations=donates)
+
+@app.route('/donations/new')
+def donation_new():
+    return render_template('donations_new.html')
 
 @app.route('/donations', methods=['POST'])
 def donation_submit():
-    name = request.form.get('charity-name')
-    charity = charities.find_one({'name': name})
-    print(charity)
     donation = {
-        'charity_id': charity["_id"],
-        # 'name': request.form.get('charity-name'),
-        # 'website': request.form.get('website'),
+        'name': request.form.get('charity-name'),
+        'website': request.form.get('website'),
         'amount': request.form.get('amount'),
         'date': request.form.get('date'),
       }
-
-    print(donation)
     donations.insert_one(donation)
-    return redirect(url_for('donations_show'))
+    return redirect(url_for('charity_index'))
 
 @app.route('/donations/<donation_id>/remove', methods=['POST'])
 def donation_del(donation_id):
     donations.delete_one({'_id': ObjectId(donation_id)})
     return redirect(url_for('charity_index'))
 
-
-
-# ---------- RUN ------------------- #
 if __name__ == '__main__':
     app.run(debug=True)
