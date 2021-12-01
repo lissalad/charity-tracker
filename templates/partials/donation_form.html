@@ -1,7 +1,34 @@
-<fieldset class="w-50 m-5">
+<fieldset class="w-50 m-3">
   <legend></legend>
+
+  <div class="form-group d-flex flex-column">
+    <label for="charity-select" class="mr-3">Charity</label>
+    <div class="form-group d-flex flex-row align-items-center">
+      <select class="br-5" name="charity-name" id="charity">
+        {% for charity in charities %}
+        <option value="{{ charity.name }}">{{ charity.name }}</option>
+        {% endfor %}
+      </select>
+      <a
+        href="/charities/new"
+        class="newchair mx-4 my-0 btn btn-default navbar-btn bg-info text-light"
+        >New Charity</a
+      >
+    </div>
+  </div>
+
   <div class="form-group">
-    <label for="charity-name">Charity Name</label>
+    <label for="amount">Amount Donated</label>
+    <input class="form-control" id="amount" type="number" value="" name="amount" required />
+  </div>
+
+  <div class="form-group">
+    <label for="date">Date Donated</label>
+    <input class="form-control" id="date" type="date" value="" name="date" required />
+  </div>
+</fieldset>
+
+<!-- <label for="charity-name">Charity Name</label>
     <input
       class="form-control"
       id="charity-name"
@@ -14,13 +41,4 @@
   <div class="form-group">
     <label for="date">Charity Website</label>
     <input class="form-control" id="website" type="url" value="" name="website" />
-  </div>
-  <div class="form-group">
-    <label for="amount">Amount Donated</label>
-    <input class="form-control" id="amount" type="number" value="" name="amount" required />
-  </div>
-  <div class="form-group">
-    <label for="date">Date Donated</label>
-    <input class="form-control" id="date" type="date" value="" name="date" required />
-  </div>
-</fieldset>
+  </div> -->

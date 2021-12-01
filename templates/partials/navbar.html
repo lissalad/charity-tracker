@@ -1,12 +1,55 @@
 <nav class="navbar navbar-default bg-secondary navbar-fixed-top p-3">
-  <div class="container-fluid">
-    <div class="">
-      <a class="navbar-brand text-light text-center" href="/">My Giving Tracker</a>
+  <a class="navbar-brand text-light" href="/">My Giving Tracker</a>
+  <div class="d-flex flex-row">
+    <div class="d-flex flex-row mx-4 d-flex align-items-center">
+      <a class="navbar-nav text-light text-center" href="/charities">Charities</a>
+      <a href="/charities/new" class="btn btn-default navbar-btn bg-info text-light">Add</a>
     </div>
+    <div class="d-flex flex-row mx-5 d-flex align-items-center">
+      <a class="navbar-nav text-light text-center" href="/donations">Donations</a>
+      <a class="btn btn-default navbar-btn bg-info text-light" href="/donations/new">Add</a>
+    </div>
+  </div>
+</nav>
+<!-- 
+
+    <div class="dropdown show">
+      <a
+        class="btn btn-primary dropdown-toggle"
+        role="button"
+        id="dropdownMenuLink"
+        data-toggle="dropdown"
+      >
+        View
+      </a>
+
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/charities">Charities</a>
+        <a class="dropdown-item" href="/donations">Donations</a>
+      </div>
+    </div>
+
+    <div class="dropdown show">
+      <a
+        class="btn btn-info dropdown-toggle"
+        role="button"
+        id="dropdownMenuLink"
+        data-toggle="dropdown"
+      >
+        Add New
+      </a>
+
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/charities/new">Charity</a>
+      </div>
+    </div>
+
     <div class="pull-right">
       <a href="/donations/new" class="btn btn-default navbar-btn bg-info text-light"
         >Add Donation</a
       >
+      <a href="/charities/new" class="btn btn-default navbar-btn bg-info text-light">Add Charity</a>
+      <a href="/charities" class="btn btn-default navbar-btn bg-info text-light">All Charities</a>
+      <a href="/donations" class="btn btn-default navbar-btn bg-info text-light">All Donations</a>
     </div>
-  </div>
-</nav>
+  </div> -->

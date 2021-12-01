@@ -1,0 +1,64 @@
+html {
+}
+
+main {
+  margin: 2%;
+}
+
+.btn {
+  padding: 1px 6px 1px 6px;
+  font-size: 0.9em;
+  margin: 8%;
+  height: fit-content;
+}
+
+.navbar-brand {
+  font-size: 3.5em;
+  margin-left: 2%;
+  font-family: "Outfit", sans-serif;
+}
+
+.navbar-nav {
+  font-size: 2em;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.greeting {
+  margin-top: 100px;
+  margin-bottom: 90px;
+  font-size: 3.3em;
+  font-family: "Noto Serif", serif;
+}
+h1 {
+  margin: 0;
+}
+
+select {
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.3em;
+}
+
+input {
+}
+
+footer {
+  margin-top: 400px !important;
+}
+
+form {
+  margin-left: 10%;
+}
+
+.title {
+  margin: 0 0 20px 17%;
+}
