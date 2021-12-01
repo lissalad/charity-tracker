@@ -2,7 +2,7 @@ html {
 }
 
 main {
-  margin: 2%;
+  margin: 0 2% 20px 2%;
 }
 
 .btn {
@@ -33,8 +33,8 @@ a {
 }
 
 .greeting {
-  margin-top: 100px;
-  margin-bottom: 90px;
+  margin-top: 70px;
+  margin-bottom: 70px;
   font-size: 3.3em;
   font-family: "Noto Serif", serif;
 }
@@ -61,4 +61,15 @@ form {
 
 .title {
   margin: 0 0 20px 17%;
+}
+
+label,
+h1,
+select,
+.btn,
+h4,
+h3,
+a,
+p {
+  font-family: "Ubuntu", sans-serif;
 }

@@ -61,12 +61,15 @@ def donation_create():
     donation = {
         'charity_id': charity['_id'],
         'name': request.form.get('charity-name'),
-        'website': charity('website'),
-        'amount': request.form.get('amount'),
+        'website': charity['website'],
+        'amount': float(request.form.get('amount')),
         'date': request.form.get('date'),
       }
     donations.insert_one(donation)
-    return redirect(url_for('charity_index'))
+    total = donation['amount'] + charity['total']
+    charities.update_one({'_id': donation['charity_id']}, {'$set':{'total':total}})
+    print(charity['total'])
+    return redirect(url_for('donations_show'))
 
 @app.route('/donations/<donation_id>/remove', methods=['POST'])
 def donation_del(donation_id):

@@ -11,6 +11,10 @@
     <div class="col text-nowrap text-center d-flex align-items-center">
       <p class="m-0" style="font-size:1.2em;">{{ charity.description }}</p>
     </div>
+    <div class="col text-nowrap text-center">
+      <small class="text-secondary" style="font-size: 0.8em">Total Donated</small>
+      <p class="m-0" style="font-size:1.2em;">${{ '%.2f' | format(charity.total|float) }}</p>
+    </div>
       <div class="col-auto d-flex align-items-center">
         <form method="POST" action="/charities/{{ charity._id }}/remove">
           <button class="btn btn-danger" type="submit">
